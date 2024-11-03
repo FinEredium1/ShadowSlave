@@ -11,16 +11,17 @@ CORS(app)
 def outputing():
     data = request.json
     input_text = data.get('input')
+    comment = data.get('comment')
     chap = "Chapter " + str(input_text) + ".txt"
 
     try:
         file_path = chap
 
-        if os.path.exists(file_path):
+        if os.path.exists(file_path) and not comment:
             pass
         else:
             result = subprocess.run(
-                ['python', 'shadowc.py', input_text],
+                ['python', 'shadowc.py', input_text, comment],
                 capture_output=True,
                 text=True
             )

@@ -69,6 +69,8 @@
         
         <input type="text" id="userInput" placeholder="Enter your input">
         <button onclick="outputing()">Search</button>
+        <input type="text" id="commentInput" placeholder="Enter your comment (optional)">
+
 
         <div>
             <label for="fontSize">Font Size:</label>
@@ -109,13 +111,15 @@
     <script>
         async function outputing() {
             const userInput = document.getElementById('userInput').value;
+            const comment = document.getElementById('commentInput').value || "";
 
+            document.getElementById('output').textContent = "Loading...";
             const response = await fetch('http://127.0.0.1:5000/outputing', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({ input: userInput })
+                body: JSON.stringify({ input: userInput, comment: comment  })
             });
 
             const result = await response.json();
