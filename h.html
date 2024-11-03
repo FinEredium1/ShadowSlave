@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Canva pfp.jpg" type="image/jpeg"> <!-- Link to favicon -->
+    <title>Shadow Slave</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap');
+        body {
+            font-family: 'Merriweather', serif;
+            background-color: #7c7668;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+            color: #2e2e2e;
+            transition: background-color 0.3s ease;
+        }
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            background: #9f9090;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            font-size: 32px;
+            font-weight: 700;
+            color: #4a4a4a;
+            margin-bottom: 20px;
+        }
+        button:hover {
+            background-color: #c2b1cf;
+        }
+        #output {
+            margin-top: 20px;
+            font-size: 18px;
+            font-weight: 300;
+            white-space: pre-wrap;
+            color: #e8d3d3;
+            background: #393131;
+            padding: 20px;
+            border-radius: 5px;
+            line-height: 1.6;
+            letter-spacing: 0.5px;
+            text-align: justify;
+            box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.1);
+        }
+        button, input[type="text"], select {
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        /* Style for the YouTube iframe */
+        #youtube-player {
+            width: 100%;
+            height: 315px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Read Chapters here</h1>
+        
+        <input type="text" id="userInput" placeholder="Enter your input">
+        <button onclick="outputing()">Search</button>
+
+        <div>
+            <label for="fontSize">Font Size:</label>
+            <select id="fontSize" onchange="changeFontSize()">
+                <option value="16px">Small</option>
+                <option value="18px">Medium</option>
+                <option value="20px">Large</option>
+                <option value="24px">Extra Large</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="bgColor">Background Color:</label>
+            <select id="bgColor" onchange="changeBackgroundColor()">
+                <option value="#393131">Default</option>
+                <option value="#4e4848">Some weird Brown</option>
+                <option value="#1b1919">Soft Black</option>
+                <option value="#303936">Green</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="fontFamily">Font Style:</label>
+            <select id="fontFamily" onchange="changeFontFamily()">
+                <option value="'Arial', sans-serif">Arial</option>
+                <option value="'Merriweather', serif">Merriweather</option>
+                <option value="'Georgia', serif">Georgia</option>
+                <option value="'Times New Roman', serif">Times New Roman</option>
+                <option value="'Courier New', monospace">Courier New</option>
+            </select>
+        </div>
+
+        <iframe id="youtube-player" src = "https://www.youtube.com/embed/KegyqyEoZsI?autoplay=1&loop=10&playlist=KegyqyEoZsI" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+        <div id="output">Chapter will appear here.</div>
+    </div>
+
+    <script>
+        async function outputing() {
+            const userInput = document.getElementById('userInput').value;
+
+            const response = await fetch('http://127.0.0.1:5000/outputing', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ input: userInput })
+            });
+
+            const result = await response.json();
+
+            if (response.ok) {
+                document.getElementById('output').textContent = result.content;
+            } else {
+                document.getElementById('output').textContent = "Error: " + result.error;
+            }
+        }
+
+        function changeFontSize() {
+            const fontSize = document.getElementById('fontSize').value;
+            document.getElementById('output').style.fontSize = fontSize;
+        }
+
+        function changeBackgroundColor() {
+        const bgColor = document.getElementById('bgColor').value;
+        document.getElementById('output').style.backgroundColor = bgColor;
+        }
+
+        function changeFontFamily() {
+            const fontFamily = document.getElementById('fontFamily').value;
+            document.body.style.fontFamily = fontFamily;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+gjjl nmpk owqm keez
+2198082micheal@gmail.com
+fahmed71@gatech.edu
+watch for market cap.
+
+Get a feel of how much people trade daily.
+Whats their current static market cap?
+How much did it change?
+change by 50bn?
+Ya might be important
+
+trading strat 1:
+
+check if price above 200 day moving avg
+check if rsi is not overbought
+check if macd indicator is below 0 and macd is over signal
+buy
+
+trading strat 2:
+as soon as market opens go to 30min time frame
+wait for the first candle to fully form
+draw high and low of that candle. Whisker to whisker
+now go to 5min time frame
+wait for a break with candle
+the direction it breaks, it'll go in that dir
+
+Strat 3
+
+FVG + Liuidty sweep
