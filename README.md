@@ -3,4 +3,5 @@ Pirating from a pirate. Ai ai captain or something i dont know. All you need are
 Make sure to set the chrome driver path in ChromeLocation's first line. 
 
 FrontEnd: HTML, CSS and JavaScript
+
 BackEnd: Flask, CORS, Selenium, BeautifulSoup, subprocess
