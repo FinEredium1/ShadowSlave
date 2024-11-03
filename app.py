@@ -1,11 +1,11 @@
 from flask import Flask, request, jsonify
-from flask_cors import CORS  # Import Flask-CORS
+from flask_cors import CORS
 import subprocess
 import os
 
 
 app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+CORS(app)
 
 @app.route('/outputing', methods=['POST'])
 def outputing():
@@ -13,7 +13,6 @@ def outputing():
     input_text = data.get('input')
     chap = "Chapter " + str(input_text) + ".txt"
 
-    # Run the Python script with the input text and capture the output
     try:
         file_path = chap
 

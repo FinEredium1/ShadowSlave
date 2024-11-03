@@ -14,7 +14,7 @@ if len(sys.argv) < 2:
 chap = sys.argv[1]
 
 
-with open('PxyList.txt', 'r') as file:
+with open('ChromeLocation.txt', 'r') as file:
     fst = file.readline().strip()
     code = file.readline().strip()
 
