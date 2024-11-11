@@ -114,7 +114,7 @@
             const comment = document.getElementById('commentInput').value || "";
 
             document.getElementById('output').textContent = "Loading...";
-            const response = await fetch('http://127.0.0.1:5000/outputing', {
+            const response = await fetch('http://10.91.2.18:5000/outputing', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

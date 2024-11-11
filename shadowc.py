@@ -2,7 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options  # Import Options
+from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
@@ -47,7 +47,7 @@ try:
         scrolling = driver.find_element(By.CSS_SELECTOR, "button.bg-blue-600.text-white")
         driver.execute_script("arguments[0].scrollIntoView(true);", commenting_id)
         commenting_id.send_keys(comment)
-        
+
         try:
             button = WebDriverWait(driver, 10).until(
                 EC.element_to_be_clickable((By.CSS_SELECTOR, "button.bg-blue-600.text-white"))
@@ -66,7 +66,7 @@ try:
             page_content = driver.page_source
             soup = BeautifulSoup(page_content, 'html.parser')
             driver.close()
-            
+
     comments_section = soup.find_all(class_="comments-section")
     for comments in comments_section:
         comments.decompose()
